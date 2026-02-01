@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine?</title>
+  <meta charset="UTF-8" />
+  <title>SUNIL Will You Be My Valentine?</title>
+
   <style>
     body {
       height: 100vh;
@@ -15,57 +16,91 @@
     }
 
     .card {
-      text-align: center;
+      width: 360px;
+      height: 260px;
       background: white;
-      padding: 40px;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
+      position: relative;
     }
 
     h1 {
       margin-bottom: 30px;
     }
 
+    .buttons {
+      position: relative;
+      height: 80px;
+    }
+    
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
     button {
       padding: 12px 24px;
       font-size: 16px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      position: relative;
     }
 
     #yes {
       background-color: #ff4d6d;
       color: white;
-      margin-right: 20px;
     }
 
     #no {
       background-color: #adb5bd;
       color: white;
       position: absolute;
+      left: 180px;
+      top: 0;
+    }
+
+    .result img {
+      width: 180px;
+      border-radius: 12px;
+      margin-top: 10px;
     }
   </style>
 </head>
+
 <body>
 
   <div class="card">
-    <h1>Will you be my Valentine? ❤️</h1>
-    <button id="yes" onclick="sayYes()">Yes</button>
-    <button id="no" onmouseover="moveNo()">No</button>
+    <img src="WhatsApp Image 2026-02-01 at 21.11.05.jpg" alt="pig image" style="width:50%;">
+    <h1>Sunil Will You Be My Valentine? ❤️</h1>
+
+    <div class="buttons">
+      <button id="yes" onclick="sayYes()">Yes</button>
+      <button id="no" onmouseover="moveNo()">No</button>
+    </div>
+    <p><small>"No" seems a bit shy😈</small></p>
   </div>
 
   <script>
     function sayYes() {
-      document.body.innerHTML = "<h1 style='text-align:center;'>Yay! 💕🥰</h1>";
+      const cardtest=document.getElementById("card");
+      cardtest.innerHTML ='
+        <div class="result"><img src="WhatsApp Image 2026-02-01 at 21.11.05.jpg" alt="pig image">
+        <h1 style='text-align:center;'>Yay!! 💕 Love You My Valentine 😍</h1>
+        <div class="result"><img src="Dancing Friends Gif.gif" alt="excited">';
     }
 
     function moveNo() {
       const noBtn = document.getElementById("no");
+      const container = document.querySelector(".buttons");
 
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
+      const maxX = container.offsetWidth - noBtn.offsetWidth;
+      const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
 
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
